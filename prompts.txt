@@ -1,0 +1,6 @@
+Somos un grupo de estudiantes de programación web que queremos hacer un proyeto para desarrollar una aplicación web que permita generar tarjetas de presentación de mascotas en las que se recojas datos como el nombre de la mascota, la edad, el peso, raza, foto y un enlace a Instagram y genere una tarjeta virtual enviando los datos a un servidor para guardarlos.
+La descripción y las restricciones del proyecto están en el fichero @README.md
+Vamos a usar GitHub como gestor de versiones e Issues y un tablero Kanban en GitHub Projects para organizar las historias de usuaria y las tareas.
+Genera una lista con todas las historias de usuaria que definan la aplicación web y con un título corto y una descripción siguiendo el esquema AS-I WANT TO-AS pero en español.
+Escribe el resultado en el fichero @TAREAS.md.
+Divide la maquetación en dos historias distintas, primero la maquetación de la versión móvil y luego la maquetación para tablet y escritorio.
