@@ -1,6 +1,12 @@
+@use '../common/mixins' as mixins;
+
 .preview {
   padding: 38px 35px 40px 45px;
   background-image: linear-gradient(to bottom, var(--color-bg), var(--color-bg-light));
+
+  @include mixins.tablet {
+    width: calc(100% - 400px);
+  }
 
   &__card {
     width: 240px;
