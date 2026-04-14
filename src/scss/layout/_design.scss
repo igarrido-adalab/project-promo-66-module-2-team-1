@@ -1,1 +1,55 @@
+.form {
+  &__paletteslist {
+    list-style-type: none;
+  }
+  &__paletteslist > * {
+    margin-bottom: 1rem;
+  }
+  &__paletteItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 
+  &__paletteBox {
+    width: 2rem;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+
+.first_palette {
+  .colorOne{
+    background-color: var(--dark-green-blue);
+  }
+  .colorTwo{
+    background-color: var(--dirty-blue);
+  }
+  .colorThree{
+    background-color: var(--hospital-green);
+  }
+}
+
+.second_palette {
+  .colorOne{
+    background-color: var(--dried-blood);
+  }
+  .colorTwo{
+    background-color: var(--rusty-red);
+  }
+  .colorThree{
+    background-color: var(--tomato);
+  }
+}
+
+.third_palette {
+  .colorOne{
+    background-color: var(--slate);
+  }
+  .colorTwo{
+    background-color: var(--faded-orange);
+  }
+  .colorThree{
+    background-color: var(--light-grey-blue);
+  }
+}
