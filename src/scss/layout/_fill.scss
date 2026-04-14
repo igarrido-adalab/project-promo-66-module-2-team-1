@@ -13,12 +13,10 @@
   }
 
   &__item--photo {
-    list-style-type: none;
-    display: flex;
-    margin-top: 18px;
+    @extend .form__item;
+    
     flex-direction: row;
     flex-wrap: wrap;
-    margin-inline: var(--spacing-1);
   }
   &__photolabel {
     width: 100%;
