@@ -1,1 +1,49 @@
+@use '../common/mixins' as mixins;
 
+.preview {
+  padding: 38px 35px 40px 45px;
+  background-image: linear-gradient(to bottom, var(--color-bg), var(--color-bg-light));
+
+  @include mixins.tablet {
+    width: calc(100% - 400px);
+  }
+
+  &__card {
+    width: 240px;
+    height: 330px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+  }
+
+  &__photo {
+    width: 200px;
+    height: 200px;
+  }
+  &__header {
+    border-left: solid 5px var(--dirty-blue);
+    padding-left: 15px;
+    margin-left: -20px;
+  }
+  &__name {
+    color: var(--dark-green-blue);
+  }
+  &__icon {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    margin-left: 5px;
+    border-radius: 50%;
+    border: solid 2px var(--hospital-green);
+    color: var(--dark-green-blue);
+    text-decoration: none;
+  }
+}
+
+.preview__photo {
+  background-image: url("../../images/monigota.png");
+  background-position: center;
+  background-size: cover;
+}
