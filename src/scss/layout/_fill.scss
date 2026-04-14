@@ -1,1 +1,48 @@
+.form {
+  &__item {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    margin-top: 18px;
+    margin-inline: var(--spacing-1);
+  }
 
+  &__designinput {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item--photo {
+    list-style-type: none;
+    display: flex;
+    margin-top: 18px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-inline: var(--spacing-1);
+  }
+  &__photolabel {
+    width: 100%;
+  }
+  &__photobutton {
+    color: white;
+    background-color: var(--dull-orange);
+    font-weight: lighter;
+    width: 140px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+  }
+  &__photoinput {
+    display: none;
+  }
+  &__photothumb {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    border: solid 1px var(--hospital-green);
+    background-size: contain;
+    background-position: center center;
+  }
+} /* END Form */
