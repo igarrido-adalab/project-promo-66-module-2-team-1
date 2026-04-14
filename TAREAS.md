@@ -1,186 +1,172 @@
-# Historias de Usuario - Generador de Tarjetas de Mascotas
+# Historias de Usuario - Proyecto Profile Cards
 
-Este documento detalla las historias de usuario para el desarrollo de la aplicación web, organizadas por hitos de desarrollo y con sus respectivos criterios de aceptación y tareas técnicas.
+### Bloque 1: Landing y Estructura Base (Sprint 1)
 
-## Hito 1: Estructura y Maquetación (Mobile First)
+1. **Página de bienvenida**
+   - **Descripción:**
+     COMO usuaria,
+     QUIERO acceder a una página de landing,
+     PARA conocer el propósito de la aplicación y poder navegar hacia el generador de tarjetas.
+   - **Criterios de aceptación:**
+     - [ ] La página carga correctamente en la raíz del proyecto.
+     - [ ] Presenta claramente el nombre del proyecto y su funcionalidad principal.
+     - [ ] Incluye un botón o enlace de "Comenzar" que redirige a la página del generador.
+   - **Tareas técnicas:**
+     - [ ] Maquetar la estructura HTML semántica de la landing (`index.html`).
+     - [ ] Crear el archivo de estilos base y variables CSS (colores, tipografías) para asegurar consistencia.
+     - [ ] Implementar el diseño visual con CSS (Layout y componentes).
+     - [ ] Configurar el enlace de navegación hacia la página del generador.
+   - **Oportunidad DRY:** Definir variables CSS globales para que sean reutilizadas en todas las páginas del proyecto.
 
-### 1. Maquetación Base de la Versión Móvil
-**COMO** usuaria de móvil,
-**QUIERO** que la aplicación tenga un diseño adaptado a pantallas pequeñas,
-**PARA QUE** pueda crear la tarjeta de mi mascota cómodamente desde mi teléfono.
+2. **Maquetación del generador (Versión móvil)**
+   - **Descripción:**
+     COMO usuaria móvil,
+     QUIERO ver el formulario y la tarjeta de previsualización adaptados a pantallas pequeñas,
+     PARA poder introducir mis datos cómodamente desde mi teléfono siguiendo la estrategia _Mobile First_.
+   - **Criterios de aceptación:**
+     - [ ] La estructura se adapta a anchos de pantalla de dispositivos móviles (típicamente < 768px).
+     - [ ] El formulario y la tarjeta de previsualización se muestran en una sola columna (uno debajo de otro).
+     - [ ] No existe desbordamiento horizontal (_scroll_ lateral).
+     - [ ] Los campos de entrada y botones tienen un tamaño adecuado para interacción táctil.
+   - **Tareas técnicas:**
+     - [ ] Crear la estructura HTML del generador (`create.html` o similar) con secciones diferenciadas para Header, Preview, Form (Diseña, Rellena y Comparte) y Footer.
+     - [ ] Maquetar el Header (versión móvil).
+     - [ ] Maquetar la Preview (versión móvil).
+     - [ ] Maquetar la sección Diseña del formulario (versión móvil).
+     - [ ] Maquetar la sección Rellena del formulario (versión móvil).
+     - [ ] Maquetar la sección Comparte del formulario (versión móvil).
+     - [ ] Maquetar el Footer (versión móvil).
+     - [ ] Implementar el layout CSS Mobile First usando Flexbox para una disposición vertical.
+     - [ ] Maquetar los inputs del formulario siguiendo los estándares de accesibilidad (labels, placeholders).
+     - [ ] Diseñar el componente "Tarjeta" como un elemento independiente de HTML y CSS.
 
-**Criterios de Aceptación:**
-- [ ] La interfaz se visualiza correctamente en dispositivos con un ancho de 320px en adelante.
-- [ ] No existe scroll horizontal en la página.
-- [ ] Los elementos (formulario y vista previa) aparecen apilados verticalmente.
-- [ ] Los botones y campos de entrada tienen un tamaño adecuado para ser pulsados con el dedo.
+3. **Maquetación del generador (Versión tablet/escritorio)**
+   - **Descripción:**
+     COMO usuaria de ordenador o tablet,
+     QUIERO ver una disposición optimizada del formulario y la previsualización en paralelo,
+     PARA aprovechar el espacio de mi pantalla grande al crear mi tarjeta.
+   - **Criterios de aceptación:**
+     - [ ] Se aplican Media Queries para anchos de pantalla mayores a 768px y 1280px.
+     - [ ] El formulario y la tarjeta de previsualización se muestran en paralelo (disposición de columnas).
+     - [ ] El diseño visual es equilibrado y aprovecha el espacio horizontal sin estirar excesivamente los elementos (un tope al ancho del formulario y la tarjeta de previsualización centrada).
+   - **Tareas técnicas:**
+     - [ ] Añadir Media Queries específicas para el Header (para tablets y escritorio).
+     - [ ] Añadir Media Queries específicas para la Preview (para tablets y escritorio).
+     - [ ] Añadir Media Queries específicas para la sección Diseña del formulario (para tablets y escritorio).
+     - [ ] Añadir Media Queries específicas para la sección Rellena del formulario (para tablets y escritorio).
+     - [ ] Añadir Media Queries específicas para la sección Comparte del formulario (para tablets y escritorio).
+     - [ ] Añadir Media Queries específicas para el Footer (para tablets y escritorio).
+     - [ ] Ajustar el contenedor principal a un layout de dos columnas (ej. CSS Grid o Flex-row).
+     - [ ] Optimizar márgenes y espaciados para pantallas grandes.
 
-**Tareas Técnicas:**
-- [ ] Crear la estructura HTML5 semántica (header, main, section, form, footer).
-- [ ] Configurar el archivo de variables SASS/CSS (colores, fuentes, espaciados).
-- [ ] Implementar el reset de estilos y la tipografía base.
-- [ ] Maquetar el formulario y la tarjeta de previsualización usando Flexbox para disposición vertical.
+4. **Secciones colapsables**
+   - **Descripción:** COMO usuaria, QUIERO poder abrir y cerrar las secciones del formulario, PARA mantener la interfaz organizada y centrarme en el bloque de datos que estoy rellenando.
+   - **Criterios de aceptación:**
+     - [ ] Al hacer clic en la cabecera de una sección (ej. "Rellena"), esta se despliega y las demás se cierran automáticamente.
+     - [ ] Existe un indicador visual (icono de flecha) que cambia de dirección según la sección esté abierta o cerrada.
+     - [ ] El contenido oculto no interfiere con el flujo de la página ni es accesible mediante el tabulador mientras está cerrado.
+   - **Tareas técnicas:**
+     - [ ] Añadir clases de estado en CSS para ocultar/mostrar contenido (ej. `.collapsed`).
+     - [ ] Crear una función en JS que gestione el evento 'click' en las cabeceras.
+     - [ ] Implementar la lógica para que solo una sección esté abierta a la vez (Acordeón).
+   - **Oportunidad SOLID:** Crear una función genérica `toggleSection` que reciba el elemento a colapsar, separando la gestión del evento de la manipulación del DOM.
 
-### 2. Adaptación para Tablet y Escritorio
-**COMO** usuaria de ordenador,
-**QUIERO** que la interfaz se reorganice para aprovechar el espacio de pantallas grandes,
-**PARA QUE** la experiencia de uso sea óptima en cualquier dispositivo.
+### Bloque 2: Interactividad y Validación (Sprint 1)
 
-**Criterios de Aceptación:**
-- [ ] En pantallas de escritorio, el formulario y la vista previa aparecen uno al lado del otro (diseño en columnas).
-- [ ] El diseño se ajusta fluidamente mediante Media Queries sin romper la estructura.
-- [ ] Las imágenes y tipografías escalan proporcionalmente al tamaño de la pantalla.
+5. **Previsualización en tiempo real**
+   - **Descripción:** COMO usuaria, QUIERO que los textos que escribo en el formulario se actualicen instantáneamente en la tarjeta de previsualización, PARA comprobar el resultado visual de mis datos sin cambiar de página.
+   - **Criterios de aceptación:**
+     - [ ] El texto de la tarjeta cambia inmediatamente al escribir en campos como "Nombre", "Puesto", etc.
+     - [ ] Si un campo está vacío, la tarjeta muestra un texto de relleno por defecto (ej. "Nombre Apellido").
+     - [ ] Los enlaces de redes sociales en la tarjeta se actualizan con la información introducida.
+   - **Tareas técnicas:**
+     - [ ] Definir un objeto de datos centralizado en JS que represente el estado de la tarjeta.
+     - [ ] Crear listeners para el evento `input` en todos los campos del formulario.
+     - [ ] Crear una función `updatePreview` que sincronice el objeto de datos con los nodos del DOM de la tarjeta.
+   - **Oportunidad DRY:** Usar un único listener para el formulario completo (delegación de eventos) y mapear los IDs de los inputs con las claves del objeto de datos.
 
-**Tareas Técnicas:**
-- [ ] Definir los breakpoints para tablet (768px) y escritorio (1024px).
-- [ ] Aplicar CSS Grid o Flexbox para cambiar el flujo a dos columnas en pantallas grandes.
-- [ ] Ajustar el ancho máximo del contenedor principal y centrarlo en la página.
-- [ ] Refactorizar el CSS para evitar duplicidad de estilos (principio DRY).
+6. **Validación de campos**
+   - **Descripción:** COMO usuaria, QUIERO que el formulario me indique si he introducido datos erróneos o si faltan campos obligatorios, PARA garantizar que mi tarjeta final sea correcta.
+   - **Criterios de aceptación:**
+     - [ ] El campo de email valida que el formato sea correcto (presencia de @ y dominio).
+     - [ ] El campo numérico `field1` valida que sea diferente de 0.
+     - [ ] Los campos marcados como obligatorios muestran un mensaje de error o resalte visual si se dejan vacíos.
+     - [ ] Los tipos de input HTML son semánticamente correctos (`tel`, `email`, `url`).
+   - **Tareas técnicas:**
+     - [ ] Configurar los atributos HTML de validación nativa (`required`, `pattern`).
+     - [ ] Implementar estilos CSS para los estados `:invalid` y `:valid`.
+     - [ ] Crear una función de validación personalizada en JS para requisitos complejos (ej. `field1 != 0`).
 
-### 3. Página de Bienvenida (Landing)
-**COMO** nueva usuaria,
-**QUIERO** ver una página de inicio atractiva,
-**PARA QUE** pueda entender rápidamente para qué sirve la aplicación y cómo empezar a usarla.
+### Bloque 3: Funcionalidades Avanzadas y Compartir (Sprint 2)
 
-**Criterios de Aceptación:**
-- [ ] Existe un botón o enlace claro de "Comenzar" que lleva a la página del generador.
-- [ ] Se muestra un resumen visual o textual de las funcionalidades (Nombre, foto, redes sociales).
-- [ ] El diseño de la landing es coherente con el resto de la aplicación.
+7. **Subida de foto de perfil**
+   - **Descripción:** COMO usuaria, QUIERO poder seleccionar una imagen de mi dispositivo, PARA personalizar mi tarjeta de visita con mi fotografía.
+   - **Criterios de aceptación:**
+     - [ ] El botón de "Añadir imagen" abre el selector de archivos del sistema operativo.
+     - [ ] La imagen seleccionada se muestra en la miniatura del formulario.
+     - [ ] La imagen seleccionada se visualiza correctamente dentro de la tarjeta de previsualización.
+   - **Tareas técnicas:**
+     - [ ] Implementar el input de tipo `file` oculto y vincularlo al botón personalizado.
+     - [ ] Usar la API `FileReader` de JS para convertir la imagen en una URL de datos (base64).
+     - [ ] Actualizar la propiedad `photo` en el objeto de estado y refrescar la previsualización.
 
-**Tareas Técnicas:**
-- [ ] Crear el archivo `index.html` para la landing.
-- [ ] Maquetar la sección Hero con el título del proyecto y una imagen descriptiva.
-- [ ] Implementar el sistema de navegación entre la landing y el generador.
-- [ ] Crear un parcial de footer reutilizable para ambas páginas.
+8. **Generación de tarjeta en el servidor**
+   - **Descripción:** COMO usuaria, QUIERO enviar los datos de mi formulario al servidor mediante un botón, PARA obtener una URL única y permanente de mi tarjeta virtual.
+   - **Criterios de aceptación:**
+     - [ ] Al pulsar "Crear tarjeta", se envía una petición POST a la API con la estructura de datos definida.
+     - [ ] Se muestra un estado visual de "Cargando" mientras se espera la respuesta.
+     - [ ] Tras el éxito, se muestra la URL devuelta por el servidor y se habilita la sección de compartir.
+   - **Tareas técnicas:**
+     - [ ] Crear un servicio o función `sendDataToServer` que utilice `fetch` para realizar el POST.
+     - [ ] Gestionar la respuesta del servidor (éxito/error) y actualizar la UI con el enlace resultante.
+     - [ ] Implementar un componente de feedback visual (spinner o mensaje de carga).
+   - **Oportunidad SOLID:** Aislar la lógica de comunicación con la API en un módulo independiente (Patrón Servicio).
 
-## Hito 2: Formulario e Interactividad
+9. **Compartir en Twitter**
+   - **Descripción:** COMO usuaria, QUIERO tener un botón para compartir mi nueva tarjeta en Twitter, PARA difundir mi perfil profesional en redes sociales de forma sencilla.
+   - **Criterios de aceptación:**
+     - [ ] El botón de Twitter solo es funcional después de haber generado la tarjeta con éxito.
+     - [ ] Al hacer clic, se abre una nueva ventana/pestaña hacia Twitter.
+     - [ ] El tweet incluye un texto predefinido atractivo y la URL de la tarjeta generada.
+   - **Tareas técnicas:**
+     - [ ] Crear una función que genere la URL de intención de Twitter (`twitter.com/intent/tweet`).
+     - [ ] Controlar la visibilidad y estado de habilitación del botón de compartir en función de la respuesta de la API.
 
-### 4. Introducción de Datos de la Mascota
-**COMO** dueña de una mascota,
-**QUIERO** rellenar un formulario con su nombre, edad, peso, raza e Instagram,
-**PARA QUE** esos datos aparezcan en su tarjeta de presentación.
+10. **Visualización de tarjeta final**
+    - **Descripción:** COMO usuaria, QUIERO acceder a una página dedicada que muestre los datos recuperados del servidor, PARA verificar que mi tarjeta se visualiza correctamente para otros usuarios.
+    - **Criterios de aceptación:**
+    * [ ] La página carga los datos mediante una petición GET usando el ID/URL de la tarjeta.
+    * [ ] La maquetación de esta página es idéntica a la previsualización final del generador.
+    * [ ] La página es accesible de forma pública para cualquier persona con el enlace.
 
-**Criterios de Aceptación:**
-- [ ] El formulario contiene al menos 6 campos de entrada específicos para mascotas.
-- [ ] El campo "Peso" o "Edad" es de tipo numérico y no permite valores negativos.
-- [ ] El campo "Instagram" tiene el formato adecuado para un enlace o nombre de usuario.
-- [ ] Se muestran mensajes de error si se intenta enviar el formulario con campos obligatorios vacíos.
+- **Tareas técnicas:**
+  - [ ] Crear una nueva página HTML o lógica de ruta para la vista individual.
+  - [ ] Implementar la petición GET al servidor para recuperar los datos por ID.
+  - [ ] Reutilizar la función `updatePreview` o el componente "Tarjeta" para renderizar los datos recibidos.
+- **Oportunidad DRY:** El componente visual de la tarjeta y su lógica de renderizado deben ser compartidos entre el generador y la página final.
 
-**Tareas Técnicas:**
-- [ ] Definir un objeto de JavaScript único para almacenar los datos de la mascota (Principio de Responsabilidad Única).
-- [ ] Implementar los inputs en HTML con etiquetas `name` coincidentes con las claves del objeto de datos.
-- [ ] Añadir validaciones de tipo y obligatoriedad en HTML5.
-- [ ] Crear una función de validación personalizada para manejar errores antes del envío.
+### Bloque 4: Persistencia y Experiencia de Usuario (Sprint 2)
 
-### 5. Vista Previa en Tiempo Real
-**COMO** usuaria,
-**QUIERO** ver cómo se actualiza la tarjeta automáticamente mientras escribo en el formulario,
-**PARA QUE** pueda comprobar cómo queda el diseño sin tener que esperar al final.
+11. **Persistencia local (LocalStorage)**
+    - **Descripción:** COMO usuaria, QUIERO que mis datos se guarden automáticamente en el navegador mientras relleno el formulario, PARA no perder el progreso si recargo la página accidentalmente.
+    - **Criterios de aceptación:**
+    * [ ] Los datos se guardan en LocalStorage tras cada cambio en el formulario.
+    * [ ] Al cerrar y volver a abrir el navegador o recargar la página, el formulario recupera todos los datos guardados.
+    * [ ] La tarjeta de previsualización se actualiza automáticamente con los datos recuperados al cargar la página.
 
-**Criterios de Aceptación:**
-- [ ] Al escribir en el input de "Nombre", el texto cambia instantáneamente en la tarjeta de previsualización.
-- [ ] Si un campo se deja vacío, la tarjeta muestra un texto por defecto (ej: "Nombre de mi mascota").
-- [ ] Todos los campos de texto (Raza, edad, etc.) se reflejan en la vista previa sin necesidad de pulsar un botón de "Guardar".
+- **Tareas técnicas:**
+  - [ ] Crear funciones `saveToLocalStorage` y `getFromLocalStorage`.
+  - [ ] Invocar el guardado dentro del ciclo de actualización de datos del formulario.
+  - [ ] Implementar la carga inicial de datos al arrancar la aplicación.
 
-**Tareas Técnicas:**
-- [ ] Crear un módulo `preview.js` encargado exclusivamente de renderizar la tarjeta.
-- [ ] Implementar delegación de eventos (`input`) en el formulario para capturar cambios de forma eficiente.
-- [ ] Programar la lógica de "texto por defecto" cuando los campos estén vacíos.
-- [ ] Asegurar que la función de renderizado no tenga efectos secundarios (Función Pura siempre que sea posible).
+12. **Reinicio de formulario (Reset)**
+    - **Descripción:** COMO usuaria, QUIERO disponer de un botón de reset, PARA borrar todos los datos introducidos y comenzar una tarjeta nueva desde cero rápidamente.
+    - **Criterios de aceptación:**
+    * [ ] Al pulsar el botón "Reset", todos los campos del formulario vuelven a estar vacíos o a su estado inicial.
+    * [ ] Se eliminan los datos correspondientes de LocalStorage.
+    * [ ] La tarjeta de previsualización vuelve a mostrar los textos e imagen por defecto.
 
-### 6. Secciones Colapsables del Formulario
-**COMO** usuaria,
-**QUIERO** que el formulario esté dividido en secciones (Diseña, Rellena, Comparte) que pueda abrir y cerrar,
-**PARA QUE** la interfaz sea más limpia y no me abrume ver todos los campos a la vez.
-
-**Criterios de Aceptación:**
-- [ ] Al hacer clic en el encabezado de una sección, esta se despliega y las demás se cierran automáticamente (efecto acordeón).
-- [ ] Existe un indicador visual (como una flecha) que cambia de dirección al abrir/cerrar la sección.
-- [ ] Por defecto, la primera sección ("Diseña") aparece abierta al cargar la página.
-
-**Tareas Técnicas:**
-- [ ] Crear clases CSS para los estados `.collapsed` y `.active`.
-- [ ] Implementar un módulo `collapsibles.js` para gestionar el estado de los paneles.
-- [ ] Añadir transiciones CSS para animar la apertura y el cierre.
-- [ ] Utilizar constantes para identificar las secciones y evitar "magic numbers" o strings sueltos.
-
-### 7. Función de Limpieza (Reset)
-**COMO** usuaria,
-**QUIERO** tener un botón para borrar todos los datos introducidos,
-**PARA QUE** pueda empezar una tarjeta nueva desde cero rápidamente si me equivoco.
-
-**Criterios de Aceptación:**
-- [ ] Al pulsar el botón "Reset", todos los campos del formulario quedan vacíos o con sus valores iniciales.
-- [ ] La tarjeta de previsualización vuelve a su estado original por defecto.
-- [ ] Se borra también la imagen que se haya subido previamente.
-
-**Tareas Técnicas:**
-- [ ] Crear una función `resetData` que restablezca el objeto de datos a su estado inicial.
-- [ ] Vincular el evento `click` del botón reset con la limpieza del DOM y la actualización del preview.
-- [ ] Desacoplar la lógica de reset de la lógica de guardado.
-
-## Hito 3: Conexión con Servidor y Redes Sociales
-
-### 8. Subida de Fotografía
-**COMO** usuaria,
-**QUIERO** poder seleccionar y subir una foto de mi mascota desde mi dispositivo,
-**PARA QUE** la tarjeta sea personalizada y muestre a mi animal.
-
-**Criterios de Aceptación:**
-- [ ] El botón de añadir imagen abre el explorador de archivos del sistema.
-- [ ] Una vez seleccionada, la imagen aparece correctamente encuadrada en la tarjeta de previsualización.
-- [ ] Se muestra una miniatura de la imagen seleccionada junto al botón de subida.
-
-**Tareas Técnicas:**
-- [ ] Implementar un input de tipo `file` oculto y activarlo mediante un botón personalizado.
-- [ ] Crear una utilidad `fileReader.js` para procesar la imagen y convertirla a Base64.
-- [ ] Actualizar la propiedad `photo` del objeto de datos de la mascota.
-- [ ] Aplicar estilos CSS `object-fit: cover` para asegurar el correcto encuadre de la imagen.
-
-### 9. Generación de Tarjeta Virtual (Servidor)
-**COMO** usuaria,
-**QUIERO** enviar los datos a un servidor para guardar la tarjeta,
-**PARA QUE** se genere un enlace único y permanente que pueda compartir con otras personas.
-
-**Criterios de Aceptación:**
-- [ ] Al pulsar "Crear tarjeta", se realiza una petición POST a la API con los datos del formulario.
-- [ ] Si la respuesta es exitosa, se muestra la URL generada por el servidor.
-- [ ] Si hay un error, se muestra un mensaje informativo a la usuaria.
-
-**Tareas Técnicas:**
-- [ ] Crear un módulo `api.js` que gestione las llamadas a servicios externos (Inyección de Dependencias).
-- [ ] Implementar la función `sendData` usando `fetch` y manejando errores con `try/catch`.
-- [ ] Gestionar el estado de carga (bloquear botones, mostrar spinner) durante la petición.
-- [ ] Mostrar el contenedor de "resultado" solo cuando la petición haya tenido éxito.
-
-### 10. Compartir en Twitter
-**COMO** usuaria orgullosa de mi mascota,
-**QUIERO** publicar el enlace de la tarjeta directamente en Twitter con un mensaje predefinido,
-**PARA QUE** mis seguidores puedan ver la ficha de mi mascota.
-
-**Criterios de Aceptación:**
-- [ ] El botón de Twitter solo se activa una vez se ha generado la URL de la tarjeta correctamente.
-- [ ] Al pulsar el botón, se abre una nueva pestaña de Twitter con el texto: "¡Mira la tarjeta de mi mascota! [URL]".
-
-**Tareas Técnicas:**
-- [ ] Construir la URL de compartir usando `encodeURIComponent` para el texto y la URL.
-- [ ] Implementar la lógica para abrir el enlace en una ventana nueva (`target="_blank"`).
-- [ ] Cambiar visualmente el botón de Twitter para indicar si está listo para ser pulsado.
-
-## Hito 4: Persistencia y Experiencia de Usuario
-
-### 11. Autoguardado de Datos (LocalStorage)
-**COMO** usuaria,
-**QUIERO** que los datos del formulario se guarden en el navegador,
-**PARA QUE** si cierro la pestaña o refresco la página por error, no pierda la información que ya había escrito.
-
-**Criterios de Aceptación:**
-- [ ] Al recargar la página (F5), el formulario mantiene los datos que se escribieron antes del refresco.
-- [ ] La tarjeta de previsualización también se carga con los datos guardados en LocalStorage.
-- [ ] Al pulsar el botón "Reset", los datos se eliminan tanto del formulario como del LocalStorage.
-
-**Tareas Técnicas:**
-- [ ] Crear un módulo `storage.js` para centralizar la interacción con `localStorage`.
-- [ ] Implementar una función de "guardado automático" que se ejecute en cada cambio del formulario.
-- [ ] Programar la lógica de recuperación de datos al inicio de la aplicación.
-- [ ] Sincronizar el estado del objeto de datos con el contenido de LocalStorage de forma consistente.
+- **Tareas técnicas:**
+  - [ ] Crear una función `resetData` que restaure el objeto de estado a sus valores iniciales.
+  - [ ] Limpiar el LocalStorage.
+  - [ ] Forzar una actualización de la UI (formulario y previsualización).

@@ -4,3 +4,11 @@ Vamos a usar GitHub como gestor de versiones e Issues y un tablero Kanban en Git
 Genera una lista con todas las historias de usuaria que definan la aplicación web y con un título corto y una descripción siguiendo el esquema AS-I WANT TO-AS pero en español.
 Escribe el resultado en el fichero @TAREAS.md.
 Divide la maquetación en dos historias distintas, primero la maquetación de la versión móvil y luego la maquetación para tablet y escritorio.
+
+---
+
+Por cada hisoria de usuario descrita en el fichero @TAREAS.md añade un checklist de criterios de aceptación de esa historia que permitan comprobar de forma manual y funcional que la tarea está completada y cumple los requisitos y restricciones acordadas. 
+
+---
+
+Por cada hisoria de usuario descrita en el fichero @TAREAS.md añade una lista con las tareas que una programadora y maquetadora web tiene que realizar para completar la historia. Intenta que las tareas cumplan los principios SOLID.
