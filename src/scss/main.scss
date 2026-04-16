@@ -1,6 +1,9 @@
 @use './common/reset';
 @use './common/variables';
 @use './common/mixins';
+@use './common/fancy-borders';
+@use './components/buttons';
+@use './components/inputs';
 @use './layout/header';
 @use './layout/footer';
 @use './layout/preview';
@@ -8,6 +11,4 @@
 @use './layout/design';
 @use './layout/fill';
 @use './layout/share';
-@use './components/buttons';
-@use './components/inputs';
 @use './pages/create';

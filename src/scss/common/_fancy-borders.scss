@@ -1,0 +1,31 @@
+@mixin fancy-borders {
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  border-bottom-right-radius: 225px 15px;
+  border-bottom-left-radius: 15px 255px;
+  &:hover {
+    box-shadow: 2px 8px 4px -6px hsla(0, 0%, 0%, 0.3);
+  }
+}
+
+.fancy-border,
+.fancy-border-lined-thin {
+  @include fancy-borders;
+  border: solid 2px #41403e;
+}
+.fancy-border-lined-thick {
+  @include fancy-borders;
+  border: solid 3px #41403e;
+}
+
+.bdr-blue {
+  border-color: blue;
+}
+
+.bdr-green {
+  border-color: green;
+}
+
+.bdr-red {
+  border-color: red;
+}

@@ -1,4 +1,5 @@
 @use '../common/mixins' as mixins;
+@use '../components/buttons';
 
 .preview {
   padding: 38px 35px 40px 45px;
@@ -6,6 +7,13 @@
 
   @include mixins.tablet {
     width: calc(100% - 400px);
+  }
+
+  &__btn {
+    @extend .btn;
+
+    border: none;
+    outline: none;
   }
 
   &__card {

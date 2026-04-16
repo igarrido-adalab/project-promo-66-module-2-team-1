@@ -1,17 +1,4 @@
-.btn {
-  display: inline-block;
-  height: 30px;
-  padding-inline: 20px;
-
-  background-color: var(--dull-orange);
-  color: white;
-
-  font-weight: lighter;
-  line-height: 30px;
-  text-align: center;
-
-  cursor: pointer;
-}
+@use '../components/buttons';
 
 .form {
   &__button {
