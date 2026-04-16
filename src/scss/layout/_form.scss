@@ -6,4 +6,18 @@
   @include mixins.tablet {
     width: 400px;
   }
+
+  &__box {
+    padding-bottom: var(--spacing-2);
+    margin-bottom: var(--spacing-2);
+    border: none;
+    border-bottom: solid 1px #d8d8d8;
+  }
+
+  &__heading {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-block: var(--spacing-2);
+  }
 }
