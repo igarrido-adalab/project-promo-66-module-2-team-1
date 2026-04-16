@@ -12,3 +12,7 @@
 @use './layout/fill';
 @use './layout/share';
 @use './pages/create';
+
+.collapsed {
+  display: none;
+}

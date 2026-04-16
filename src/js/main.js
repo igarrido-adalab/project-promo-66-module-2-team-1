@@ -1,179 +1,81 @@
-const exec = require("child_process").exec;
-const fs = require("node:fs");
+"use strict";
 
-function executeDiffAddedFiles() {
-  return new Promise((resolve) => {
-    // <https://stackoverflow.com/questions/2412450/git-pre-commit-hook-changed-added-files>
-    exec(
-      "git diff --cached --name-only --diff-filter=A",
-      function (error, stdout, stderr) {
-        resolve(stdout);
-      },
-    );
-  });
+const designCollapseBtn = document.querySelector(".js_designCollapseBtn");
+const fillCollapseBtn = document.querySelector(".js_fillCollapseBtn");
+const shareCollapseBtn = document.querySelector(".js_shareCollapseBtn");
+const designSection = document.querySelector(".js_designSection");
+const fillSection = document.querySelector(".js_fillSection");
+const shareSection = document.querySelector(".js_shareSection");
+
+function handleHoldUpDesignBtn(ev) {
+  ev.preventDefault();
+
+  designSection.classList.remove("collapsed");
+  fillSection.classList.add("collapsed");
+  shareSection.classList.add("collapsed");
 }
 
-function executeDiffModifiedFiles() {
-  return new Promise((resolve) => {
-    // <https://stackoverflow.com/questions/2412450/git-pre-commit-hook-changed-added-files>
-    exec(
-      "git diff --cached --name-only --diff-filter=CMR",
-      function (error, stdout, stderr) {
-        resolve(stdout);
-      },
-    );
-  });
+designCollapseBtn.addEventListener("click", handleHoldUpDesignBtn);
+
+function handleHoldUpFillBtn(ev) {
+  ev.preventDefault();
+
+  designSection.classList.add("collapsed");
+  fillSection.classList.remove("collapsed");
+  shareSection.classList.add("collapsed");
 }
 
-function getFileDates(filename) {
-  const stat = fs.statSync(filename);
-  const fileCreateDate = new Date(parseInt(stat.birthtimeMs))
-    .toISOString()
-    .split("T")
-    .at(0);
-  const fileUpdateDate = new Date(parseInt(stat.mtimeMs))
-    .toISOString()
-    .split("T")
-    .at(0);
+fillCollapseBtn.addEventListener("click", handleHoldUpFillBtn);
 
-  return { fileCreateDate, fileUpdateDate };
+function handleHoldUpShareBtn(ev) {
+  ev.preventDefault();
+
+  designSection.classList.add("collapsed");
+  fillSection.classList.add("collapsed");
+  shareSection.classList.remove("collapsed");
 }
 
-function getFileContent(filename) {
-  const content = fs.readFileSync(filename, "utf-8");
-  return content.trim();
+shareCollapseBtn.addEventListener("click", handleHoldUpShareBtn);
+
+const data = {
+  palette: 1,
+  name: "",
+  job: "",
+  email: "",
+  phone: "",
+  linkedin: "",
+  github: "",
+  photo: "",
+};
+
+const inputs = document.querySelectorAll(".js_input");
+
+const namePreview = document.querySelector(".js_namePreview");
+const jobPreview = document.querySelector(".js_jobPreview");
+const phonePreview = document.querySelector(".js_phonePreview");
+const emailPreview = document.querySelector(".js_emailPreview");
+const linkedinPreview = document.querySelector(".js_linkedinPreview");
+const githubPreview = document.querySelector(".js_githubPreview");
+
+function renderPreview() {
+  namePreview.innerHTML = data.name || "Nombre Apellidos";
+  jobPreview.innerHTML = data.job || "Front-end developer";
+  emailPreview.href = `mailto:${data.email}` || "#";
+  phonePreview.href = `tel:${data.phone}` || "#";
+  linkedinPreview.href = `https://${data.linkedin}` || "#";
+  githubPreview.href =
+    `https://github.com/${data.github.replace("@", "")}` || "#";
 }
 
-function getFrontmatterLines(filename) {
-  const content = getFileContent(filename);
-  const frontMatterLines = content
-    .substring(3, content.indexOf("---", 3))
-    .trim()
-    .split("\n")
-    .map((line) => line.trim());
+function handleInput(ev) {
+  console.log("Funciona", ev.target.id, ev.target.value);
 
-  return { content, frontMatterLines };
+  data[ev.target.id] = ev.target.value;
+
+  console.log(data);
+  renderPreview();
 }
 
-function checkCreateDate(filename) {
-  const { fileCreateDate, fileUpdateDate } = getFileDates(filename);
-
-  // Get file frontMatter lines
-  let { content, frontMatterLines } = getFrontmatterLines(filename);
-
-  // Get create date
-  const createDate = frontMatterLines.find((line) =>
-    line.startsWith("createdAt"),
-  );
-
-  if (!createDate) {
-    // Set create date
-    content =
-      "---" +
-      content.substring(3).replace("---", `createdAt: ${fileCreateDate}\n---`);
-
-    fs.writeFileSync(filename, content, "utf-8");
-  } else if (
-    !createDate.split(":")[1] ||
-    !new RegExp(/(\d{4})-(\d{2})-(\d{2})/).test(createDate.split(":")[1])
-  ) {
-    content =
-      "---" +
-      content
-        .substring(3)
-        .replace(/createdAt:.*/g, `createdAt: ${fileCreateDate}`);
-    fs.writeFileSync(filename, content, "utf-8");
-  }
+for (const input of inputs) {
+  input.addEventListener("input", handleInput);
 }
-
-function checkUpdateDate(filename) {
-  const { fileCreateDate, fileUpdateDate } = getFileDates(filename);
-
-  // Get file frontMatter lines
-  let { content, frontMatterLines } = getFrontmatterLines(filename);
-
-  // Get create date
-  const createDate = frontMatterLines
-    .find((line) => line.startsWith("createdAt"))
-    ?.split(":")[1]
-    ?.trim();
-
-  // Get update date
-  const updateDate = frontMatterLines.find((line) =>
-    line.startsWith("updateAt"),
-  );
-
-  if (createDate === fileUpdateDate) {
-    return;
-  }
-
-  if (!updateDate) {
-    // Set create date
-    content =
-      "---" +
-      content.substring(3).replace("---", `updateAt: ${fileUpdateDate}\n---`);
-
-    fs.writeFileSync(filename, content, "utf-8");
-  } else {
-    content =
-      "---" +
-      content
-        .substring(3)
-        .replace(/updateAt:.*/g, `updateAt: ${fileUpdateDate}`);
-    fs.writeFileSync(filename, content, "utf-8");
-  }
-}
-
-function checkFrontmatter(filename) {
-  let content = getFileContent(filename);
-
-  if (content.indexOf("---") < 0) {
-    // No frontmatter
-    content = `---\ntitle:\n---\n${content}`;
-  } else if (content.indexOf("---") === 0) {
-    // Only one divider
-    const idxNextDivider = content.indexOf("---", 3);
-    if (idxNextDivider < 0) {
-      const idxDoubleLine = content.indexOf("\n\n", 3);
-      const idxLastDoubleDot = content.indexOf("\n", content.indexOf(":"));
-
-      const idxNextDivider =
-        idxDoubleLine > 0
-          ? idxDoubleLine
-          : idxLastDoubleDot > 0
-            ? idxLastDoubleDot
-            : 3;
-
-      content =
-        content.substring(0, idxNextDivider) +
-        "\n---\n" +
-        content.substring(idxNextDivider);
-    }
-  }
-  fs.writeFileSync(filename, content, "utf-8");
-}
-
-(async function () {
-  const today = new Date().toISOString().split("T").at(0);
-
-  const diffNewFilesOutput = await executeDiffAddedFiles();
-  const newFiles = diffNewFilesOutput.trim().length
-    ? diffNewFilesOutput.trim().split("\n")
-    : [];
-
-  newFiles.forEach((filename) => {
-    checkFrontmatter(filename);
-    checkCreateDate(filename);
-  });
-
-  const diffModifiedFilesOutput = await executeDiffModifiedFiles();
-  const modifiedFiles = diffModifiedFilesOutput.trim().length
-    ? diffModifiedFilesOutput.trim().split("\n")
-    : [];
-
-  modifiedFiles.forEach((filename) => {
-    checkFrontmatter(filename);
-    checkCreateDate(filename);
-    checkUpdateDate(filename);
-  });
-})();
