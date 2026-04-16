@@ -1,17 +1,17 @@
-@use './common/reset';
-@use './common/variables';
-@use './common/mixins';
-@use './common/fancy-borders';
-@use './components/buttons';
-@use './components/inputs';
-@use './layout/header';
-@use './layout/footer';
-@use './layout/preview';
-@use './layout/form';
-@use './layout/design';
-@use './layout/fill';
-@use './layout/share';
-@use './pages/create';
+@use "./common/reset";
+@use "./common/variables";
+@use "./common/mixins";
+@use "./common/fancy-borders";
+@use "./components/buttons";
+@use "./components/inputs";
+@use "./layout/header";
+@use "./layout/footer";
+@use "./layout/preview";
+@use "./layout/form";
+@use "./layout/design";
+@use "./layout/fill";
+@use "./layout/share";
+@use "./pages/create";
 
 .collapsed {
   display: none;
@@ -32,6 +32,8 @@
     padding-inline: var(--spacing-2);
     border: none;
     outline: none;
+
+    font-family: var(--font-main);
 
     /* <https://frontendmasters.com/blog/drawing-css-shapes-using-corner-shape/> */
     border-top-right-radius: var(--spacing-1) 50%;
