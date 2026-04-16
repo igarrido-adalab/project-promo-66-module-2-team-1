@@ -18,6 +18,14 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-block: var(--spacing-2);
+  }
+
+  &__arrowBtn {
+    background-color: none;
+    padding: var(--spacing-1);
+    border-radius: 50%;
+    cursor: pointer;
   }
 }
