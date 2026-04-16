@@ -4,31 +4,250 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Título</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" href="./images/favicon.png" />
-    <link rel="stylesheet" crossorigin href="./assets/main-tn0RQdqM.css">
+    <script
+      src="https://kit.fontawesome.com/66349fc88a.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" crossorigin href="./assets/main-CO6qwWLI.css">
   </head>
 
-  <body>
-    <header>HEADER</header>
+  <body class="create">
+    <header class="header">
+  <img class="header__logo" src="./images/image.png" alt="Logo de Adalab" />
+  <h1 class="title--big">Awesome profile cards</h1>
+</header>
 
-    <main>
-      <section>PREVIEW</section>
+    <main class="page main">
+      <!-- PREVIEW -->
+<section class="preview fancy-border">
+  <button class="preview__btn">
+    <i class="far fa-trash-alt" aria-hidden="true"></i> Reset
+  </button>
+  <article class="preview__card fancy-border">
+    <div class="preview__header">
+      <h2 class="preview__name">Nombre Apellidos</h2>
+      <h3 class="preview__job">Front-end developer</h3>
+    </div>
+    <!-- <img
+      class="preview__photo"
+      src="./images/monigota.png"
+      alt="Foto de la usuaria"
+    /> -->
+    <div class="preview__photo"></div>
 
-      <form>
-  DESIGN
+    <nav>
+      <a class="preview__icon" href="">
+        <!-- title="" -->
+        <i class="fas fa-phone"></i>
+      </a>
+      <a class="preview__icon" href="#">
+        <i class="far fa-envelope"></i>
+      </a>
+      <a class="preview__icon" href="">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a class="preview__icon" href="">
+        <i class="fab fa-github-alt"></i>
+      </a>
+    </nav>
+  </article>
+</section>
 
-  FILL
+      <form class="form">
+  <fieldset class="form__box">
+    <legend class="form__heading">
+      <i class="fa-solid fa-brush"></i>
+      <h3>Diseña</h3>
+      <button class="form__arrowBtn">
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+    </legend>
+    <label>Colores</label>
+<ul class="form__paletteslist">
+  <li class="first_palette">
+    <label class="form__paletteItem" for="palette1">
+      <input
+        checked="true"
+        id="palette1"
+        type="radio"
+        name="color_palette"
+        class="input_palette"
+        value="1"
+      />
+      Paleta 1
+      <div class="colorOne form__paletteBox"></div>
+      <div class="colorTwo form__paletteBox"></div>
+      <div class="colorThree form__paletteBox"></div>
+    </label>
+  </li>
 
-  SHARE
+  <li class="second_palette">
+    <label class="form__paletteItem" for="palette2">
+      <input
+        checked="false"
+        id="palette2"
+        type="radio"
+        name="color_palette"
+        class="input_palette"
+        value="2"
+      />
+      Paleta 2
+      <div class="colorOne form__paletteBox"></div>
+      <div class="colorTwo form__paletteBox"></div>
+      <div class="colorThree form__paletteBox"></div>
+    </label>
+  </li>
 
+  <li class="third_palette">
+    <label class="form__paletteItem" for="palette3">
+      <input
+        checked="false"
+        id="palette3"
+        type="radio"
+        name="color_palette"
+        class="input_palette"
+        value="3"
+      />
+      Paleta 3
+      <div class="colorOne form__paletteBox"></div>
+      <div class="colorTwo form__paletteBox"></div>
+      <div class="colorThree form__paletteBox"></div>
+    </label>
+  </li>
+</ul>
+
+  </fieldset>
+  <fieldset class="form__box">
+    <legend class="form__heading">
+      <i class="fa-solid fa-pencil"></i>
+      <h3>Rellena</h3>
+      <button class="form__arrowBtn">
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+    </legend>
+    <ul class="">
+  <li class="form__item">
+    <label for="name">Nombre completo</label>
+    <input
+      class=""
+      type="text"
+      name="name"
+      id="name"
+      placeholer="Ej: Sally Jill"
+    />
+  </li>
+  <li class="form__item">
+    <label for="job">Puesto</label>
+    <input
+      class=""
+      type="text"
+      name="job"
+      id="job"
+      placeholer="Ej: Front-end unicorn"
+    />
+  </li>
+
+  <li class="form__item--photo fancy-border bdr-red">
+    <label class="form__photolabel" for="photo">Imagen de perfil</label>
+    <label for="photo" class="form__photobutton">Añadir imagen</label>
+
+    <input class="hidden" id="photo" type="file" />
+
+    <span class="form__photothumb"></span>
+  </li>
+
+  <li class="form__item">
+    <label for="email">Email</label>
+    <input
+      class=""
+      type="text"
+      name="email"
+      id="email"
+      placeholer="Ej. sally.hill@email.com"
+    />
+  </li>
+  <li class="form__item">
+    <label for="phone">Teléfono</label>
+    <input
+      class=""
+      type="text"
+      name="phone"
+      id="phone"
+      placeholer="Ej. 555-55-55-55"
+    />
+  </li>
+  <li class="form__item">
+    <label for="linkedin">Linkedin</label>
+    <input
+      class=""
+      type="text"
+      name="linkedin"
+      id="linkedin"
+      placeholer="Ej. linkedin.com/in/sally-hill"
+    />
+  </li>
+  <li class="form__item">
+    <label for="github">Github</label>
+    <input
+      class=""
+      type="text"
+      name="github"
+      id="github"
+      placeholer="Ej. @Sally-Hill"
+    />
+  </li>
+</ul>
+
+  </fieldset>
+  <fieldset class="form__box">
+    <legend class="form__heading">
+      <i class="fa-solid fa-share"></i>
+      <h3>Comparte</h3>
+      <button class="form__arrowBtn">
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+    </legend>
+    <button class="form__button--create">
+  <i class="far fa-address-card" aria-hidden="true"></i>
+  Crear tarjeta
+</button>
+
+<div class="hidden">
+  <p>Tu tarjeta ha sido creada.</p>
+  <p>
+    Puedes visitar la información en el siguiente enlace:
+    <a class="" href=""></a>
+  </p>
+  <p>
+    <a class="form__button--share" href=""
+      ><i class="fa-brands fa-bluesky"></i> Compartir en Bluesky</a
+    >
+  </p>
+</div>
+
+<div class="hidden">
+  No se pudo crar la tarjeta porque faltan datos por rellenar.
+</div>
+
+  </fieldset>
 </form>
 
     </main>
-    <footer>FOOTER</footer>
+    <footer class="footer">
+  Awesome profile cards &#x1F952; &copy;2026 Promo Ana Freire
+  <img class="footer__logo" src="./images/logo-adalab.png" alt="Logo Adalab" />
+</footer>
 
     <script src="./js/main.js"></script>
   </body>
