@@ -1,1 +1,9 @@
+@use '../common/mixins' as mixins;
 
+.form {
+  padding: var(--spacing-3);
+
+  @include mixins.tablet {
+    width: 400px;
+  }
+}
