@@ -8,24 +8,9 @@
   }
 
   &__box {
-    padding-bottom: var(--spacing-2);
-    margin-bottom: var(--spacing-2);
+    padding-block: var(--spacing-2);
+    margin-block: var(--spacing-2);
     border: none;
     border-bottom: solid 1px #d8d8d8;
-  }
-
-  &__heading {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-block: var(--spacing-2);
-  }
-
-  &__arrowBtn {
-    background-color: none;
-    padding: var(--spacing-1);
-    border-radius: 50%;
-    cursor: pointer;
   }
 }

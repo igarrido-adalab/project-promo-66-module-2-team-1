@@ -1,38 +1,25 @@
 <form class="form">
-  <fieldset class="form__box">
-    <legend class="form__heading">
-      <i class="fa-solid fa-brush"></i>
-      <h3>Diseña</h3>
-      <button class="form__arrowBtn js_designCollapseBtn">
-        <i class="fa-solid fa-chevron-down"></i>
+  <ul class="breadcrumbs">
+    <li>
+      <button class="breadcrumbs__step--selected js_showDesignBtn">
+        Diseña
       </button>
-    </legend>
-    <div class="js_designSection">
-      <load src="partials/form/design.html" />
-    </div>
+    </li>
+    <li>
+      <button class="breadcrumbs__step js_showFillBtn">Rellena</button>
+    </li>
+    <li>
+      <button class="breadcrumbs__step js_showShareBtn">Comparte</button>
+    </li>
+  </ul>
+
+  <fieldset class="form__box js_designSection">
+    <load src="partials/form/design.html" />
   </fieldset>
-  <fieldset class="form__box">
-    <legend class="form__heading">
-      <i class="fa-solid fa-pencil"></i>
-      <h3>Rellena</h3>
-      <button class="form__arrowBtn js_fillCollapseBtn">
-        <i class="fa-solid fa-chevron-down"></i>
-      </button>
-    </legend>
-    <div class="js_fillSection collapsed">
-      <load src="partials/form/fill.html" />
-    </div>
+  <fieldset class="form__box js_fillSection collapsed">
+    <load src="partials/form/fill.html" />
   </fieldset>
-  <fieldset class="form__box">
-    <legend class="form__heading">
-      <i class="fa-solid fa-share"></i>
-      <h3>Comparte</h3>
-      <button class="form__arrowBtn js_shareCollapseBtn">
-        <i class="fa-solid fa-chevron-down"></i>
-      </button>
-    </legend>
-    <div class="js_shareSection collapsed">
-      <load src="partials/form/share.html" />
-    </div>
+  <fieldset class="form__box js_shareSection collapsed">
+    <load src="partials/form/share.html" />
   </fieldset>
 </form>

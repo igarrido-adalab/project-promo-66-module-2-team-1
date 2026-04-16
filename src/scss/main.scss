@@ -16,3 +16,33 @@
 .collapsed {
   display: none;
 }
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: var(--spacing-1);
+
+  list-style-type: none;
+
+  &__step {
+    color: var(--color-bg-light);
+    background-color: var(--dull-orange);
+    padding-block: var(--spacing-1);
+    padding-inline: var(--spacing-2);
+    border: none;
+    outline: none;
+
+    border-top-right-radius: var(--spacing-1) 50%;
+    border-bottom-right-radius: var(--spacing-1) 50%;
+    corner-shape: bevel;
+
+    cursor: pointer;
+
+    &--selected {
+      @extend .breadcrumbs__step;
+      font-weight: bold;
+      outline: solid 1px black;
+    }
+  }
+}

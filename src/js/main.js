@@ -1,41 +1,65 @@
 "use strict";
 
-const designCollapseBtn = document.querySelector(".js_designCollapseBtn");
+/* const designCollapseBtn = document.querySelector(".js_designCollapseBtn");
 const fillCollapseBtn = document.querySelector(".js_fillCollapseBtn");
-const shareCollapseBtn = document.querySelector(".js_shareCollapseBtn");
+const shareCollapseBtn = document.querySelector(".js_shareCollapseBtn"); */
+const showDesignBtn = document.querySelector(".js_showDesignBtn");
+const showFillBtn = document.querySelector(".js_showFillBtn");
+const showShareBtn = document.querySelector(".js_showShareBtn");
 const designSection = document.querySelector(".js_designSection");
 const fillSection = document.querySelector(".js_fillSection");
 const shareSection = document.querySelector(".js_shareSection");
 
-function handleHoldUpDesignBtn(ev) {
+function resetBreadCrumbsState() {
+  showDesignBtn.classList.add("breadcrumbs__step");
+  showFillBtn.classList.add("breadcrumbs__step");
+  showShareBtn.classList.add("breadcrumbs__step");
+  showDesignBtn.classList.remove("breadcrumbs__step--selected");
+  showFillBtn.classList.remove("breadcrumbs__step--selected");
+  showShareBtn.classList.remove("breadcrumbs__step--selected");
+}
+
+function hideAllFormSections() {
+  designSection.classList.add("collapsed");
+  fillSection.classList.add("collapsed");
+  shareSection.classList.add("collapsed");
+}
+
+function handleClickShowDesignBtn(ev) {
   ev.preventDefault();
 
+  resetBreadCrumbsState();
+  hideAllFormSections();
+
+  showDesignBtn.classList.add("breadcrumbs__step--selected");
   designSection.classList.remove("collapsed");
-  fillSection.classList.add("collapsed");
-  shareSection.classList.add("collapsed");
 }
 
-designCollapseBtn.addEventListener("click", handleHoldUpDesignBtn);
+showDesignBtn.addEventListener("click", handleClickShowDesignBtn);
 
-function handleHoldUpFillBtn(ev) {
+function handleClickShowFillBtn(ev) {
   ev.preventDefault();
 
-  designSection.classList.add("collapsed");
+  resetBreadCrumbsState();
+  hideAllFormSections();
+
+  showFillBtn.classList.add("breadcrumbs__step--selected");
   fillSection.classList.remove("collapsed");
-  shareSection.classList.add("collapsed");
 }
 
-fillCollapseBtn.addEventListener("click", handleHoldUpFillBtn);
+showFillBtn.addEventListener("click", handleClickShowFillBtn);
 
-function handleHoldUpShareBtn(ev) {
+function handleClickShowShareBtn(ev) {
   ev.preventDefault();
 
-  designSection.classList.add("collapsed");
-  fillSection.classList.add("collapsed");
+  resetBreadCrumbsState();
+  hideAllFormSections();
+
+  showShareBtn.classList.add("breadcrumbs__step--selected");
   shareSection.classList.remove("collapsed");
 }
 
-shareCollapseBtn.addEventListener("click", handleHoldUpShareBtn);
+showShareBtn.addEventListener("click", handleClickShowShareBtn);
 
 const data = {
   palette: 1,
