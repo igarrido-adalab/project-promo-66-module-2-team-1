@@ -1,11 +1,19 @@
-@use '../components/buttons';
+@use "../components/buttons";
 
 .form {
+  &__item--share {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-1);
+    margin-block: var(--spacing-1);
+  }
+
   &__button {
     &--create {
       @extend .btn;
       border: none;
-      outline: none
+      outline: none;
     }
     &--share {
       @extend .btn;
