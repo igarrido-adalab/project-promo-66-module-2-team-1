@@ -33,6 +33,7 @@
     border: none;
     outline: none;
 
+    /* <https://frontendmasters.com/blog/drawing-css-shapes-using-corner-shape/> */
     border-top-right-radius: var(--spacing-1) 50%;
     border-bottom-right-radius: var(--spacing-1) 50%;
     corner-shape: bevel;

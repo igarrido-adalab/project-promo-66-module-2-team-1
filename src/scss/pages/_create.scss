@@ -1,11 +1,20 @@
-@use '../common/mixins' as mixins;
+@use "../common/mixins" as mixins;
 
 :root:has(.create) {
   // fonts
-  --font-main: 'Gochi Hand', cursive;
+  --font-main: "Gochi Hand", cursive;
 }
 
-.page {
+.create {
+  @include mixins.tablet {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+}
+
+.create .page {
   @include mixins.tablet {
     display: flex;
     flex-direction: row-reverse;
